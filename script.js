@@ -19,14 +19,16 @@ const mobileAndTabletCheck = function() {
 
 console.log(mobileAndTabletCheck());
 
+let currentDate = new Date();
+let params = {
+  month: currentDate.getMonth(),
+  year: currentDate.getFullYear()
+};
+
 if (!isTouchDevice() && !mobileAndTabletCheck()){
 	document.getElementById("main").textContent = "This site currently designed for mobile use only."
 } else {
-	let currentDate = new Date();
-		let params = {
-		  month: currentDate.getMonth(),
-		  year: currentDate.getFullYear()
-		};
+	
 	renderCalendar(params);
 }
 
