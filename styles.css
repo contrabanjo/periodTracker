@@ -1,0 +1,82 @@
+*{
+    box-sizing: border-box;
+    --main-color: #60c84f;
+    --day-size: 70;
+}
+
+html, body {
+ height: 100%;
+ margin: 0;
+ font-size: 2.7em;
+}
+
+#main {
+    height: 100%;
+
+}
+
+@import url(https://fonts.googleapis.com/css?family=Lato:300);
+
+body {
+  background: #ccc;
+  font-family: Lato, sans-serif;
+  font-weight: 300;
+}
+
+#calendar {
+  width: 7 * var(--day_size) + px;
+  margin: 0 auto;
+  height: 100%;
+}  
+#calendar h2 {
+/*     line-height: 170px; */
+    margin: 0;
+    font-weight: 300;
+    color: #fff;
+    background: var(--main-color);
+    text-align: center;
+  }
+  
+#calendar table {
+    width: 100%;
+/*     height: 100%; */
+/*     margin-top: -42px; */
+/*     border-collapse: collapse; */
+  }
+  
+.week-days {
+    color: #fff;
+    background: var(--main-color);
+  }
+  
+.day {
+    width: var(--day_size) + px;
+    height: 40px;
+    text-align: center;
+  }
+  
+.week .day {
+      background: #eee;
+}
+
+.day:not(.other-month):hover {
+        color: #fff;
+        background: var(--main-color);
+}
+  
+.other-month {
+    opacity: 0.5;
+}
+
+
+p {
+  text-align: center;
+}
+
+button{
+  font-size: 1em;
+}
+
+.day.marked {
+ background: pink;
+}
