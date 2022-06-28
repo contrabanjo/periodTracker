@@ -117,20 +117,26 @@ function calendar(params) {
 
 function renderCalendar(params){
 	document.getElementById('calendar').innerHTML = calendar(params);
-	const allDayElements = Array.from(document.getElementsByClassName("day"))
-  	allDayElements.forEach(element => element.addEventListener('click', (ev)=>{
-  		const periods = JSON.parse(localStorage.getItem('days')) || [];
-  		if (!periods.includes(ev.target.title)){
-			localStorage.setItem('days', JSON.stringify([...periods, ev.target.title]));
-			renderCalendar({
-				month: currentDate.getMonth(),
-  				year: currentDate.getFullYear()	
-			})
-  		}
-	}))
+	
+  const allDayElements = Array.from(document.getElementsByClassName("day"))
+  
+  allDayElements.forEach(element => element.addEventListener('click', dayClickHandler))
 }
 
-
+function dayClickHandler(ev){
+  let periods = JSON.parse(localStorage.getItem('days')) || [];
+  if (!periods.includes(ev.target.title)){
+      localStorage.setItem('days', JSON.stringify([...periods, ev.target.title]));
+  } else {
+    periods = periods.filter(el => el !== ev.target.title);
+    localStorage.setItem('days', JSON.stringify(periods));
+  }
+  renderCalendar({
+    month: currentDate.getMonth(),
+    year: currentDate.getFullYear() 
+  })
+}
+  
 
 
 document.getElementById('back-button').addEventListener('click', ()=>{
@@ -150,8 +156,56 @@ document.getElementById('forward-button').addEventListener('click', ()=>{
 })
 
 document.getElementById('clear').addEventListener('click', ()=>{
-	localStorage.clear()
-	location.reload();
+  const warning = createModal("are you sure you want to delete all data? this cannot be reversed.", ()=>{
+    localStorage.clear()
+    location.reload();
+  })
+  document.getElementById('main').appendChild(warning);
 })
 
+function createModal(message, callback){
+  const modal = document.createElement('div');
+  modal.classList.add('modal');
 
+  const close = document.createElement('button');
+  close.textContent = "X";
+  close.addEventListener('click', closeModal);
+  modal.appendChild(close);
+
+  const text = document.createElement('p');
+  text.textContent = message;
+
+  modal.appendChild(text);
+
+  if (callback){
+    const choices = document.createElement('div');
+
+    const yes = document.createElement('button');
+    yes.textContent = "yes";
+    const no = document.createElement('button');
+    no.textContent = "no";
+    
+    no.addEventListener('click', closeModal);
+    yes.addEventListener('click',(ev)=>{
+      callback()
+      closeModal(ev);
+    })
+
+    choices.appendChild(yes);
+    choices.appendChild(no);
+
+    modal.appendChild(choices);
+  }
+
+  return modal;
+}
+
+function closeModal(ev){
+  const modals = Array.from(document.getElementsByClassName("modal"));
+  modals.forEach(el => el.remove())
+}
+
+document.getElementById("about").addEventListener("click", (ev)=>{
+  const text = "A period tracker that will never sell your data. All data is stored on your devices localStorage. It can be deleted from this page, or by going to your phone's settings. to see the source code or learn more, go to https://github.com/contrabanjo/periodTracker"
+  document.getElementById('main').appendChild(createModal(text));
+})

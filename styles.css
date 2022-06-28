@@ -4,23 +4,35 @@
     --day-size: 70;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Lato:300);
+
 html, body {
  height: 100%;
  margin: 0;
  font-size: 2.7em;
 }
 
-#main {
-    height: 100%;
-
+#top-buttons{
+ display: flex;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Lato:300);
+#top-buttons button{
+ flex: 1;
+}
+
+#clear{
+ margin: 4vh 0;
+}
+
+#main {
+ height: 100%;
+ display:flex;
+ flex-direction: column;   
+}
 
 body {
   background: #ccc;
   font-family: Lato, sans-serif;
-  font-weight: 300;
 }
 
 #calendar {
@@ -31,7 +43,7 @@ body {
 #calendar h2 {
 /*     line-height: 170px; */
     margin: 0;
-    font-weight: 300;
+    font-size: 2.5rem;
     color: #fff;
     background: var(--main-color);
     text-align: center;
@@ -42,7 +54,7 @@ body {
 /*     height: 100%; */
 /*     margin-top: -42px; */
 /*     border-collapse: collapse; */
-  }
+}
   
 .week-days {
     color: #fff;
@@ -65,9 +77,8 @@ body {
 }
   
 .other-month {
-    opacity: 0.5;
+  opacity: 0.5;
 }
-
 
 p {
   text-align: center;
@@ -80,3 +91,51 @@ button{
 .day.marked {
  background: pink;
 }
+
+#about{
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#signature{
+ position: absolute;
+ bottom: 0;
+ right: 0;
+ 
+ text-align: right;
+ font-size: 1rem;
+ cursor: pointer;
+}
+
+.modal {
+ position: absolute;
+ background: #808080e3;
+ height: 100%;
+ 
+ display: flex;
+ flex-direction: column;
+ place-content: center;
+ 
+ overflowX: scroll;
+ overflowY: scroll;
+
+ font-size: 1.5rem;
+ 
+ max-width: 100%;
+}
+
+.modal p {
+ background: white;
+}
+
+.modal div {
+ display: flex;
+ justify-content: space-around;
+}
+
+.modal button {
+ width: 100%;
+}
+
+
