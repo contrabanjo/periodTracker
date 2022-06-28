@@ -1,7 +1,5 @@
 console.log("javascript loaded");
 
-//const storedPeriods = JSON.parse(localStorage.getItem('days')) || [];
-//console.log(storedPeriods);
 function calendar(params) {
   const storedPeriods = JSON.parse(localStorage.getItem('days')) || [];
 
@@ -106,9 +104,7 @@ let params = {
 };
 
 renderCalendar(params);
-
-// document.getElementById('calendar').innerHTML = calendar(params);
-//thanks to Jack NUMBER on codepen (https://codepen.io/jacknumber/pen/bVgLVd);
+//thanks to Jack NUMBER on codepen for the calendar code(https://codepen.io/jacknumber/pen/bVgLVd);
 
 document.getElementById('back-button').addEventListener('click', ()=>{
 	currentDate = new Date(currentDate.getFullYear(),currentDate.getMonth()-1)
@@ -131,12 +127,4 @@ document.getElementById('clear').addEventListener('click', ()=>{
 	location.reload();
 })
 
-const allDayElements = Array.from(document.getElementsByClassName("day"))
-  allDayElements.forEach(element => element.addEventListener('click', (ev)=>{
-  const periods = JSON.parse(localStorage.getItem('days'));
-  if (!periods.includes(ev.target.title)){
-		localStorage.setItem('days', JSON.stringify([...periods, ev.target.title]));
-		location.reload();
-  }
-}))
 
