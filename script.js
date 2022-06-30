@@ -156,7 +156,7 @@ document.getElementById('forward-button').addEventListener('click', ()=>{
 })
 
 document.getElementById('clear').addEventListener('click', ()=>{
-  const warning = createModal("are you sure you want to delete all data? this cannot be reversed.", ()=>{
+  const warning = createModal("<p>Are you sure you want to delete all data?</p><p>This action cannot be reversed.</p>", ()=>{
     localStorage.clear()
     location.reload();
   })
@@ -172,8 +172,9 @@ function createModal(message, callback){
   close.addEventListener('click', closeModal);
   modal.appendChild(close);
 
-  const text = document.createElement('p');
-  text.textContent = message;
+  const text = document.createElement('div');
+  text.classList.add('text');
+  text.innerHTML = message;
 
   modal.appendChild(text);
 
@@ -206,6 +207,6 @@ function closeModal(ev){
 }
 
 document.getElementById("about").addEventListener("click", (ev)=>{
-  const text = "A period tracker that will never sell your data. All data is stored on your devices localStorage. It can be deleted from this page, or by going to your phone's settings. to see the source code or learn more, go to https://github.com/contrabanjo/periodTracker"
+  const text = "<p>All data from this app is stored in your device's Local Storage. It can be deleted from this page, or by going to your phone's settings.</p> <p>To see the source code, go to <a href='https://github.com/contrabanjo/periodTracker'>https://github.com/contrabanjo/periodTracker</a></p>"
   document.getElementById('main').appendChild(createModal(text));
 })
