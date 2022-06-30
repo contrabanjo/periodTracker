@@ -182,9 +182,9 @@ function createModal(message, callback){
     const choices = document.createElement('div');
 
     const yes = document.createElement('button');
-    yes.textContent = "yes";
+    yes.textContent = "Yes";
     const no = document.createElement('button');
-    no.textContent = "no";
+    no.textContent = "No";
     
     no.addEventListener('click', closeModal);
     yes.addEventListener('click',(ev)=>{
