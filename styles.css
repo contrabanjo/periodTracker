@@ -1,12 +1,12 @@
 *{
     box-sizing: border-box;
-    --main-color: #60c84f;
+    --main-color:#60c84f;
     --day-size: 70;
 }
 
 @font-face{
     font-family: "Lato";
-    src: url("https://fonts.gstatic.com/s/lato/v23/S6u9w4BMUTPHh7USSwiPGQ.woff2");
+    src: url("Lato.woff2");
 }
 
 /* @import url(https://fonts.googleapis.com/css?family=Lato:300); */
@@ -23,8 +23,16 @@ body {
   font-family: Lato, sans-serif;
 }
 
+button {
+  font-size: 1em;
+  background: #eee;
+  border: solid thin black;
+  border-radius: 0px;
+}
+
 #top-buttons{
  display: flex;
+ 
 }
 
 #top-buttons button{
@@ -79,10 +87,10 @@ body {
       background: #eee;
 }
 
-.day:not(.other-month):hover {
+/* .day:not(.other-month):hover {
         color: #fff;
         background: var(--main-color);
-}
+} */
   
 .other-month {
   opacity: 0.5;
@@ -90,10 +98,6 @@ body {
 
 p {
   text-align: center;
-}
-
-button{
-  font-size: 1em;
 }
 
 .day.marked {
